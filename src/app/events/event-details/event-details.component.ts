@@ -15,6 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EventDetailsComponent implements OnInit {
     event?: IEvent;
     addMode = false;
+    filterBy = 'all';
+    sortBy = 'votes';
 
     constructor(
         private eventService: EventService,
@@ -30,7 +32,7 @@ export class EventDetailsComponent implements OnInit {
     }
 
     saveNewSession(session: ISession) {
-        const nextId = Math.max.apply(this.event?.sessions.map(s => s.id));
+        const nextId = Math.max.apply(this.event?.sessions.map((s: any) => s.id));
         session.id = nextId + 1;
         this.event?.sessions.push(session);
         this.eventService.updateEvent(this.event);
