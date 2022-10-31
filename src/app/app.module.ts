@@ -1,3 +1,4 @@
+import { EventResolver } from './events/event-resolver.service';
 import { SessionListComponent } from './events/event-details/session-list.component';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './user/auth.service';
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   CreateEventComponent,
@@ -13,7 +15,6 @@ import {
   EventsListResolver,
   EventDetailsComponent,
   UpvoteComponent,
-  EventRouteActivator,
   EventService,
   DurationPipe,
   VoterService,
@@ -57,14 +58,15 @@ declare let jQuery: any;
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
     EventsListResolver,
+    EventResolver,
     AuthService,
     VoterService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }

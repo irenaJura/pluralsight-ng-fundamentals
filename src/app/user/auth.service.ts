@@ -5,6 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthService {
     currentUser: IUser | undefined;
+
     loginUser(userName: string, password: string) {
         this.currentUser = {
             id: 1,
