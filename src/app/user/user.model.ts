@@ -1,6 +1,9 @@
 export interface IUser {
-    id: number
-    firstName: string
-    lastName: string
-    userName: string
+    success: boolean,
+    user: {
+        id: number
+        firstName: string
+        lastName: string
+        userName: string
+    }
 }

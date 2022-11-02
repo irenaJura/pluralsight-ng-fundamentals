@@ -26,11 +26,10 @@ export class SessionListComponent implements OnChanges {
     }
 
     toggleVote(session: ISession) {
-        console.log(session)
         if (this.userHasVoted(session)) {
-            this.voterService.deleteVoter(this.eventId, session, this.auth.currentUser?.userName);
+            this.voterService.deleteVoter(this.eventId, session, this.auth.currentUser?.user.userName);
         } else {
-            this.voterService.addVoter(this.eventId, session, this.auth.currentUser?.userName);
+            this.voterService.addVoter(this.eventId, session, this.auth.currentUser?.user.userName);
         }
 
         if (this.sortBy === 'votes') {
@@ -39,7 +38,7 @@ export class SessionListComponent implements OnChanges {
     }
 
     userHasVoted(session: ISession): boolean {
-        return this.voterService.userHasVoted(session, this.auth.currentUser?.userName)
+        return this.voterService.userHasVoted(session, this.auth.currentUser?.user.userName)
     }
 
     filterSessions(filter: string) {
