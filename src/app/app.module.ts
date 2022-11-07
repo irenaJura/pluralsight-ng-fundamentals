@@ -1,10 +1,7 @@
-import { EventResolver } from './events/event-resolver.service';
-import { SessionListComponent } from './events/event-details/session-list.component';
-import { CreateSessionComponent } from './events/event-details/create-session.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -13,12 +10,15 @@ import {
   EventThumbnailComponent,
   EventListComponent,
   EventsListResolver,
+  EventResolver,
   EventDetailsComponent,
-  UpvoteComponent,
   EventService,
   DurationPipe,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  CreateSessionComponent,
+  SessionListComponent,
+  UpvoteComponent
 } from './events/index';
 
 import {
