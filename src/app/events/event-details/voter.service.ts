@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 export class VoterService {
     constructor(private http: HttpClient) { }
 
-    deleteVoter(eventId: number, session: ISession, voterName: string | undefined) {
+    deleteVoter(eventId: number, session: ISession, voterName?: string) {
         session.voters = session.voters.filter(v => v !== voterName);
 
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
@@ -17,7 +17,7 @@ export class VoterService {
             .subscribe();
     }
 
-    addVoter(eventId: number, session: ISession, voterName: string | undefined) {
+    addVoter(eventId: number, session: ISession, voterName?: string) {
         voterName ? session.voters.push(voterName) : null;
 
         const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -27,7 +27,7 @@ export class VoterService {
             .subscribe();
     }
 
-    userHasVoted(sesssion: ISession, voterName: string | undefined) {
+    userHasVoted(sesssion: ISession, voterName?: string) {
         if (voterName) {
             return sesssion.voters.some(v => v === voterName);
         }
